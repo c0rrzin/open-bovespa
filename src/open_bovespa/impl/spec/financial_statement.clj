@@ -45,7 +45,18 @@
               ::revenue
               ::cash-and-equivalents})
 
-(def book-accounts (->> (concat assets)
+(def liabilities #{::long-term-liabilities
+                   ::current-liabilities
+                   ::notes-payable})
+
+(def earnings #{::earnings
+                ::operating-income
+                ::net-income
+                ::net-profit-margin})
+
+(def book-accounts (->> (concat assets
+                                liabilities
+                                earnings)
                         (into #{})))
 
 (s/def ::entry (s/keys :req [::period-end ::amount ::currency ::book-account] :opt [::period-begin]))

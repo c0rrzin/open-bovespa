@@ -17,10 +17,18 @@
 (defn ensure-system-up! []
   (component/start-system (new-system)))
 
-(defn fetch-adapt-and-save! [report company]
+(defn fetch-adapt-and-save! []
   (let [sys (ensure-system-up!)]
-    (->> (protocols.cvm/fetch (:cvm sys) report company)
-         (adapters.cvm/all-assets company)
-         (datomic/enhance-entries)
-         #_(protocols.datomic/transact! (:datomic sys)))))
+    (doseq [company (->> (map :name (:all-companies (:config (:config sys))))
+                         (filter #(> (compare % :marcopolo) 0)))]
+      (let [entries
+            (mapcat
+              #(->> (protocols.cvm/fetch (:cvm sys) % company)
+                    (adapters.cvm/all-entries company)
+                    (datomic/enhance-entries))
+              #{:assets :liabilities :detailed-earnings})]
+        (println (str "Transacting " (count entries) " for " company))
+        (protocols.datomic/transact! (:datomic sys) entries)))))
+
+
 
