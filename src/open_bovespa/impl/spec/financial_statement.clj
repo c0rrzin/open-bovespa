@@ -59,5 +59,10 @@
                                 earnings)
                         (into #{})))
 
+(defn build-financial-statement [es]
+  (->> es
+       (map (fn [e]
+              [(::book-account e) (::amount e)]))))
+
 (s/def ::entry (s/keys :req [::period-end ::amount ::currency ::book-account] :opt [::period-begin]))
 

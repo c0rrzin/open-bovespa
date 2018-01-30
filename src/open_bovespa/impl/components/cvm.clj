@@ -27,7 +27,7 @@
               "Accept-Language" "en-US,en;q=0.9,pt-BR;q=0.8,pt;q=0.7"
               "Upgrade-Insecure-Requests" "1"
               "Accept" "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8"
-              "Cookie" "ASP.NET_SessionId=h1s1u255ckclyj45so0kssae; BIGipServerpool_www.rad.cvm.gov.br_443=1158162442.47873.0000; TS01871345=016e3b076fd49b42bcfaf6bb0de8cab5287fb84e0e13e58d891235d3d0f365472c84475d88"})
+              "Cookie" "ASP.NET_SessionId=wjuq5y55sq22fda0jzztbl45; BIGipServerpool_www.rad.cvm.gov.br_443=1225266186.47873.0000; TS01871345=016e3b076fbed2834a7d59b0c5bc7d6cb30a7956f606186c8f8a27f8ee30c6ec63674b25023c0cbb0b996fecde2c19487114a89e97c11bf89d4683ef731188707a2030d855"})
 
 (def config (read-string (slurp "resources/config.edn")))
 
