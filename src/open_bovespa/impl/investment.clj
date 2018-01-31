@@ -36,3 +36,6 @@
 
 (defn net-current-asset-value [{::financial-statement/keys [current-assets preferred-shares] :as fs}]
   (- current-assets (+ (total-liabilities fs) preferred-shares)))
+
+
+(defn price-for-defensive-investor [])
